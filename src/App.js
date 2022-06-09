@@ -1,7 +1,16 @@
-import logo from "./logo.svg";
-
-function App() {
-  return <div className="App"></div>;
+import ResponsiveTopNav from "./_components/ResponsiveTopNav";
+function App(props) {
+  return (
+    <div className="App">
+      <ResponsiveTopNav
+        linkOneText="Home"
+        linkTwoText="About"
+        linkThreeText="Portfolio"
+        linkFourText="Projects"
+        linkFiveText="Contact"
+      />
+    </div>
+  );
 }
 
 export default App;
