@@ -4,6 +4,7 @@ import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
 
 import { CgMenuGridO } from "react-icons/cg";
 import { FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Logo from "../_assets/logo.png";
 import React from "react";
 import { useState } from "react";
@@ -27,10 +28,14 @@ const ResponsiveTopNav = (props) => {
         </div>
         <ul className="top-nav-link-list">
           {links.map((link) => (
-            <li
-              className={active === link && "active"}
-              onClick={() => setActive(link)}
-            >{`${link}`}</li>
+            <Link className="nav-link" to={`/${link}`}>
+              <li
+                className={active === link && "active"}
+                onClick={() => setActive(link)}
+              >
+                {link}
+              </li>
+            </Link>
           ))}
         </ul>
         <ul className="top-nav-social-list">
@@ -54,10 +59,17 @@ const ResponsiveTopNav = (props) => {
       >
         <ul className="mobile-nav-list">
           {links.map((link) => (
-            <li
-              className={active === link && "active"}
-              onClick={() => setActive(link)}
-            >{`${link}`}</li>
+            <Link className="nav-link" to={`/${link}`}>
+              <li
+                className={active === link && "active"}
+                onClick={() => {
+                  setActive(link);
+                  setMobileMenuActive(false);
+                }}
+              >
+                {link}
+              </li>
+            </Link>
           ))}
         </ul>
       </nav>

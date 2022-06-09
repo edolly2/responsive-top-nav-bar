@@ -7,6 +7,10 @@
 
 }
 
+.nav-link {
+    text-decoration: none;
+}
+
 .top-nav {
     padding: 20px;
     align-items: center;
@@ -39,8 +43,14 @@
     color: cyan;
 }
 
+.mobile-nav-list li {
+    color: cyan;
+}
+
 .top-nav-link-list li:hover,
-.top-nav-link-list li.active {
+.top-nav-link-list li.active,
+.mobile-nav-list li:hover,
+.mobile-nav-list li.active {
     cursor: pointer;
     background-color: cyan;
     color: black;
@@ -96,7 +106,7 @@
 
 .mobile-nav-list li {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0 10px 25px;
 }
 
 .mobile-nav-list li:hover {
