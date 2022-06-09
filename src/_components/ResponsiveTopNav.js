@@ -2,23 +2,36 @@ import "./ResponsiveTopNav.css";
 
 import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
 
+import { CgMenuGridO } from "react-icons/cg";
 import { FaLinkedinIn } from "react-icons/fa";
 import Logo from "../_assets/logo.png";
 import React from "react";
+import { useState } from "react";
 
 const ResponsiveTopNav = (props) => {
+  const links = ["link1", "link2", "link3", "link4", "link5"];
+  const [active, setActive] = useState(null);
+  const [mobileMenuActive, setMobileMenuActive] = useState(false);
   return (
     <div>
       <nav className="top-nav">
         <div className="top-nav-logo">
           <img className="logo" src={Logo} alt="#" />
         </div>
+        <div className="hamburger-menu-btn">
+          <CgMenuGridO
+            onClick={() => {
+              setMobileMenuActive(!mobileMenuActive);
+            }}
+          />
+        </div>
         <ul className="top-nav-link-list">
-          <li>{props.linkOneText}</li>
-          <li>{props.linkTwoText}</li>
-          <li>{props.linkThreeText}</li>
-          <li>{props.linkFourText}</li>
-          <li>{props.linkFiveText}</li>
+          {links.map((link) => (
+            <li
+              className={active === link && "active"}
+              onClick={() => setActive(link)}
+            >{`${link}`}</li>
+          ))}
         </ul>
         <ul className="top-nav-social-list">
           <li className="social-link">
@@ -33,6 +46,19 @@ const ResponsiveTopNav = (props) => {
           <li className="social-link">
             <BsGithub />
           </li>
+        </ul>
+      </nav>
+      <nav
+        className="mobile-nav"
+        style={{ display: mobileMenuActive ? "flex" : "none" }}
+      >
+        <ul className="mobile-nav-list">
+          {links.map((link) => (
+            <li
+              className={active === link && "active"}
+              onClick={() => setActive(link)}
+            >{`${link}`}</li>
+          ))}
         </ul>
       </nav>
     </div>
